@@ -2,7 +2,7 @@
 
 An open-source **credential exposure monitoring** system built with Python and OSINT principles. It continuously checks email addresses against breach databases (Have I Been Pwned and more) and alerts you via **Telegram**, **Discord**, and **Email** when new data breaches are detected.
 
-> 📖 [Read the full article]([https://haveibeenpwned.com/API/v3](https://dev.to/ismail-benali/how-to-build-an-advanced-data-breach-monitoring-system-with-osint-and-python-leakradar-5j1))
+> 📖 **Read the full article:** https://dev.to/ismail-benali/how-to-build-an-advanced-data-breach-monitoring-system-with-osint-and-python-leakradar-5j1
 > "How to Build an Advanced Data Breach Monitoring System with OSINT and Python — LeakRadar"
 ---
 
@@ -28,9 +28,9 @@ An open-source **credential exposure monitoring** system built with Python and O
 
 ## Read the Article
 
-> **📖 Full article:** [How to Build an Advanced Data Breach Monitoring System with OSINT and Python — LeakRadar]([PASTE_ARTICLE_URL_HERE](https://dev.to/ismail-benali/how-to-build-an-advanced-data-breach-monitoring-system-with-osint-and-python-leakradar-5j1))
+> **📖 Full article:** [How to Build an Advanced Data Breach Monitoring System with OSINT and Python — LeakRadar](https://dev.to/ismail-benali/how-to-build-an-advanced-data-breach-monitoring-system-with-osint-and-python-leakradar-5j1)
 >
-> 🔗 **Replace `PASTE_ARTICLE_URL_HERE` with your published article link** (e.g. your blog post, LinkedIn article, or Medium story) so readers can find the complete guide behind this repository.
+> 🔗 **[Read it on dev.to](https://dev.to/ismail-benali/how-to-build-an-advanced-data-breach-monitoring-system-with-osint-and-python-leakradar-5j1)**
 
 ---
 
@@ -164,7 +164,7 @@ leakradar/
 ### 2. Clone & install
 
 ```bash
-git clone https://github.com/<your-username>/leakradar.git
+git clone https://github.com/Ismail-Benali/LeakRadar.git
 cd leakradar
 
 python -m venv .venv
