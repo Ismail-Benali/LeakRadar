@@ -28,7 +28,7 @@ An open-source **credential exposure monitoring** system built with Python and O
 
 ## Read the Article
 
-> **📖 Full article:** [How to Build an Advanced Data Breach Monitoring System with OSINT and Python — LeakRadar](PASTE_ARTICLE_URL_HERE)
+> **📖 Full article:** [How to Build an Advanced Data Breach Monitoring System with OSINT and Python — LeakRadar]([PASTE_ARTICLE_URL_HERE](https://dev.to/ismail-benali/how-to-build-an-advanced-data-breach-monitoring-system-with-osint-and-python-leakradar-5j1))
 >
 > 🔗 **Replace `PASTE_ARTICLE_URL_HERE` with your published article link** (e.g. your blog post, LinkedIn article, or Medium story) so readers can find the complete guide behind this repository.
 
