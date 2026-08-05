@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  leakradar:
+    build: .
+    container_name: leakradar
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional Redis cache for faster lookups
+  redis:
+    image: redis:7-alpine
+    container_name: leakradar-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

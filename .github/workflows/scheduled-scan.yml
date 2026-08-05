@@ -1,0 +1,67 @@
+name: Scheduled Breach Scan
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create data directory
+        run: mkdir -p data/logs
+
+      - name: Run breach scan
+        env:
+          TARGET_EMAILS: ${{ secrets.TARGET_EMAILS }}
+          HIBP_API_KEY: ${{ secrets.HIBP_API_KEY }}
+          HIBP_API_URL: ${{ secrets.HIBP_API_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_TO: ${{ secrets.SMTP_TO }}
+          DATABASE_URL: sqlite:///data/leaks.db
+          LOG_LEVEL: INFO
+          LOG_FILE: data/logs/leakradar.log
+          SCAN_INTERVAL_HOURS: 1
+          MAX_RETRIES: 3
+          REQUEST_TIMEOUT: 30
+        run: |
+          python -m src.main
+
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leakradar-logs
+          path: data/logs/
+          retention-days: 7
+
+      - name: Upload database
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leakradar-db
+          path: data/leaks.db
+          retention-days: 7
