@@ -2,9 +2,8 @@
 
 An open-source **credential exposure monitoring** system built with Python and OSINT principles. It continuously checks email addresses against breach databases (Have I Been Pwned and more) and alerts you via **Telegram**, **Discord**, and **Email** when new data breaches are detected.
 
-> 📖 **Read the full article:** `PASTE_ARTICLE_URL_HERE`
+> 📖 [Read the full article]([https://haveibeenpwned.com/API/v3](https://dev.to/ismail-benali/how-to-build-an-advanced-data-breach-monitoring-system-with-osint-and-python-leakradar-5j1))
 > "How to Build an Advanced Data Breach Monitoring System with OSINT and Python — LeakRadar"
-
 ---
 
 ## Table of Contents
