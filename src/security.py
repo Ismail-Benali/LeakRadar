@@ -6,10 +6,15 @@ from loguru import logger
 
 
 def validate_email_ownership(email: str, allowed_domains: List[str]) -> bool:
-    """Validate that an email belongs to an allowed domain."""
-    domain = email.split("@")[1] if "@" in email else ""
+    """Validate that an email belongs to an allowed domain (case-insensitive)."""
+    if not email or "@" not in email:
+        logger.warning(f"Invalid email format: {email}")
+        return False
 
-    if domain not in allowed_domains:
+    domain = email.strip().split("@")[-1].lower()
+    normalized_allowed = [d.lower() for d in allowed_domains]
+
+    if domain not in normalized_allowed:
         logger.warning(f"Unauthorized domain: {domain}")
         return False
 

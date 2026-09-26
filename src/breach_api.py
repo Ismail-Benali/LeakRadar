@@ -107,6 +107,10 @@ class HaveIBeenPwnedAPI:
 
     def get_breached_account(self, email: str) -> List[Breach]:
         """Check whether an email address has been involved in a breach."""
+        if not email or "@" not in email:
+            logger.error(f"Invalid email address provided: {email}")
+            raise BreachAPIError("Invalid email address format")
+
         logger.info(f"Checking breaches for email: {email}")
 
         endpoint = f"breachedaccount/{email}"
@@ -133,6 +137,10 @@ class HaveIBeenPwnedAPI:
 
     def get_pastes_for_email(self, email: str) -> List[dict]:
         """Search for pastes that contain the given email address."""
+        if not email or "@" not in email:
+            logger.error(f"Invalid email address provided: {email}")
+            raise BreachAPIError("Invalid email address format")
+
         logger.info(f"Checking pastes for email: {email}")
 
         response_data = self._make_request(f"pasteaccount/{email}")
